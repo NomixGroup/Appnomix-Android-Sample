@@ -13,6 +13,5 @@ class SampleApplication : Application() {
                 clientId = "insert-your-client-id"
             )
         )
-        CouponsSdkFacade.configureTestSavings()
     }
 }

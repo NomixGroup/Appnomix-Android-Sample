@@ -8,6 +8,7 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject
 import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.UiSelector
+import app.appnomix.sdk.external.CouponsSdkFacade
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -27,6 +28,8 @@ class AccessibilityJourneyTest {
 
     @Before
     fun setup() {
+        CouponsSdkFacade.configureTestSavings()
+
         val flags = UiAutomation.FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES
         Configurator.getInstance().setUiAutomationFlags(flags)
         uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
