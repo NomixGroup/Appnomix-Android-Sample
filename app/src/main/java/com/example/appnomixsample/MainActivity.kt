@@ -21,8 +21,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,13 +55,22 @@ class MainActivity : ComponentActivity() {
             viewModelState.value
         )
 
+    @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (intent.action == ACTION_ONBOARDING) {
+            CouponsSdkFacade.launchSdkOnboardingActivity(this)
+        }
+
         enableEdgeToEdge()
         setContent {
             AppnomixSampleTheme {
                 AppnomixControls(
                     modifier = Modifier
+                        .semantics {
+                            testTagsAsResourceId = true
+                        }
                         .safeContentPadding()
                         .fillMaxSize(),
                     stateFlow = uiState
@@ -102,6 +115,10 @@ class MainActivity : ComponentActivity() {
             state.copy(isActivated = CouponsSdkFacade.isAccessibilityServiceEnabled())
         }
     }
+
+    companion object {
+        const val ACTION_ONBOARDING = "com.example.appnomixsample.ACTION_ONBOARDING"
+    }
 }
 
 @Composable
@@ -128,6 +145,7 @@ fun AppnomixControls(
             )
             Spacer(modifier = Modifier.height(24.dp))
             Button(
+                modifier = Modifier.testTag("launch_onboarding_button"),
                 onClick = {
                     CouponsSdkFacade.launchSdkOnboardingActivity(context.findActivity() as Activity)
                 }) {
