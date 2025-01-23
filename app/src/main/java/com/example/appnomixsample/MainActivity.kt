@@ -59,9 +59,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (intent.action == ACTION_ONBOARDING) {
-            CouponsSdkFacade.launchSdkOnboardingActivity(this)
-        }
+        handleIntent()
 
         enableEdgeToEdge()
         setContent {
@@ -113,6 +111,15 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         viewModelState.update { state ->
             state.copy(isActivated = CouponsSdkFacade.isAccessibilityServiceEnabled())
+        }
+    }
+
+    // This is for testing purposes only, ignore in real life impleemntations
+    private fun handleIntent() {
+        intent?.action?.let { action ->
+            if (action == ACTION_ONBOARDING) {
+                CouponsSdkFacade.launchSdkOnboardingActivity(this)
+            }
         }
     }
 

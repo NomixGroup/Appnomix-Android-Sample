@@ -7,6 +7,7 @@ import androidx.test.uiautomator.Configurator
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject
 import androidx.test.uiautomator.UiObject2
+import androidx.test.uiautomator.UiScrollable
 import androidx.test.uiautomator.UiSelector
 import app.appnomix.sdk.external.CouponsSdkFacade
 import kotlinx.coroutines.delay
@@ -48,6 +49,9 @@ class AccessibilityJourneyTest {
         userInteractionDelay()
         val moreDetailsButton = findObjectByText("See more details")
         moreDetailsButton?.click()
+
+        val scrollable = UiScrollable(UiSelector().scrollable(true))
+        scrollable.scrollTextIntoView("and copy them.")
 
         userInteractionDelay()
         val iUnderstandButton = findObjectByText("I understand")

@@ -75,7 +75,7 @@ echo "Emulator $AVD_NAME has booted successfully."
 ./gradlew :app:packageDebugAndroidTest
 
 # Start screen recording
-SCREEN_RECORD_FILE="/sdcard/screen_record.mp4"
+SCREEN_RECORD_FILE="/sdcard/accessibility_permission.mp4"
 echo "Starting screen recording with 4 Mbps bitrate and 100% resolution..."
 adb shell screenrecord --bit-rate 4000000 --size 1920x1080 "$SCREEN_RECORD_FILE" &
 SCREEN_RECORD_PID=$!
@@ -95,7 +95,7 @@ echo "Stopping screen recording..."
 kill $SCREEN_RECORD_PID
 # Wait a bit for screen record to write file end
 sleep 5
-adb pull "$SCREEN_RECORD_FILE" ./screen_record.mp4
+adb pull "$SCREEN_RECORD_FILE" ./accessibility_permission.mp4
 
 # Wait before stopping the emulator
 echo "Waiting 10 seconds before stopping the emulator..."
