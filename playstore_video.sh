@@ -13,6 +13,7 @@ if [ ! -d "$ANDROID_SDK" ]; then
 fi
 
 # Ensure necessary tools are available
+ADB="$ANDROID_SDK/platform-tools/adb"
 AVD_MANAGER="$ANDROID_SDK/cmdline-tools/latest/bin/avdmanager"
 SDK_MANAGER="$ANDROID_SDK/cmdline-tools/latest/bin/sdkmanager"
 EMULATOR="$ANDROID_SDK/emulator/emulator"
@@ -63,7 +64,7 @@ $EMULATOR -avd "$AVD_NAME" -no-snapshot-load &
 
 BOOT_COMPLETE=false
 while [ "$BOOT_COMPLETE" != "1" ]; do
-    BOOT_COMPLETE=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+    BOOT_COMPLETE=$($ADB shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
     if [ "$BOOT_COMPLETE" != "1" ]; then
         echo "Waiting for emulator to boot..."
         sleep 5
@@ -77,7 +78,7 @@ echo "Emulator $AVD_NAME has booted successfully."
 # Start screen recording
 SCREEN_RECORD_FILE="/sdcard/accessibility_permission.mp4"
 echo "Starting screen recording with 4 Mbps bitrate and 100% resolution..."
-adb shell screenrecord --bit-rate 4000000 --size 1920x1080 "$SCREEN_RECORD_FILE" &
+$ADB shell screenrecord --bit-rate 4000000 --size 1920x1080 "$SCREEN_RECORD_FILE" &
 SCREEN_RECORD_PID=$!
 
 # Start the UI Automator test using Gradle
@@ -86,7 +87,8 @@ echo "Starting UI Automator test using Gradle..."
 
 if [ $? -ne 0 ]; then
     echo "Error: Failed to run the UI Automator test."
-    adb emu kill
+    $ADB emu kill
+    $AVD_MANAGER delete avd --name "$AVD_NAME"
     exit 1
 fi
 
@@ -95,7 +97,7 @@ echo "Stopping screen recording..."
 kill $SCREEN_RECORD_PID
 # Wait a bit for screen record to write file end
 sleep 5
-adb pull "$SCREEN_RECORD_FILE" ./accessibility_permission.mp4
+$ADB pull "$SCREEN_RECORD_FILE" ./accessibility_permission.mp4
 
 # Wait before stopping the emulator
 echo "Waiting 10 seconds before stopping the emulator..."
@@ -103,7 +105,7 @@ sleep 10
 
 # Stop the emulator without saving state
 echo "Stopping the emulator without saving state..."
-adb emu kill
+$ADB emu kill
 
 # Wait for the emulator to stop
 while pgrep -f "$EMULATOR" > /dev/null; do
