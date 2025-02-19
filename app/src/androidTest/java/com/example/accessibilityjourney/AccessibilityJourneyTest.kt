@@ -47,14 +47,14 @@ class AccessibilityJourneyTest {
         tellMeMoreButton?.click()
 
         userInteractionDelay()
-        val moreDetailsButton = findObjectByText("See more details")
+        val moreDetailsButton = findObjectByText("Why do we use the Accessibility Service?")
         moreDetailsButton?.click()
 
         val scrollable = UiScrollable(UiSelector().scrollable(true))
         scrollable.scrollTextIntoView("and copy them.")
 
         userInteractionDelay()
-        val iUnderstandButton = findObjectByText("I understand")
+        val iUnderstandButton = findObjectByText("I Agree")
         iUnderstandButton?.click()
 
         userInteractionDelay()
