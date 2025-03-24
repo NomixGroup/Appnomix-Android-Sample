@@ -2,5 +2,201 @@
   "credentials": {
     "client_id": "_INSERT_CLIENT_ID_",
     "auth_token": "_INSERT_AUTH_TOKEN_"
+  },
+  "onboarding_customization": {
+    "schema_version": "1",
+    "content": {
+      "program_name": "Savers League"
+    },
+    "shape_styling": {
+      "button_primary_radius": 16,
+      "button_secondary_radius": 16
+    },
+    "ui_styling": {
+      "dark_styling": {
+        "button_primary_back_color": {
+          "type": "gradient",
+          "colors": {
+            "type": "linear",
+            "stops": [
+              {
+                "hex": "#FB91F6",
+                "location": 0
+              },
+              {
+                "hex": "#D268CD",
+                "location": 0.43
+              },
+              {
+                "hex": "#9B66F7",
+                "location": 0.86
+              }
+            ],
+            "start_point": {
+              "x": -0.23,
+              "y": -0.17
+            },
+            "end_point": {
+              "x": 1.16,
+              "y": 1.01
+            }
+          }
+        },
+        "button_secondary_back_color": {
+          "type": "solid",
+          "hex": "#FFFFFF"
+        },
+        "button_primary_text_color": {
+          "type": "solid",
+          "hex": "#000000"
+        },
+        "button_secondary_text_color": {
+          "type": "solid",
+          "hex": "#000000"
+        },
+        "button_tertiary_text_color": {
+          "type": "solid",
+          "hex": "#E379DD"
+        },
+        "accent_color": {
+          "type": "solid",
+          "hex": "#E4BD6D"
+        },
+        "illustration_color": {
+          "type": "gradient",
+          "colors": {
+            "type": "linear",
+            "stops": [
+              {
+                "hex": "#E7C072",
+                "location": 0
+              },
+              {
+                "hex": "#FFF2CB",
+                "location": 1
+              }
+            ],
+            "start_point": {
+              "x": 0.5,
+              "y": 0
+            },
+            "end_point": {
+              "x": 0.5,
+              "y": 1
+            }
+          }
+        },
+        "illustration_shadow": {
+          "hex": "#FFC400",
+          "radius": 44,
+          "point": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      "light_styling": {
+        "button_primary_back_color": {
+          "type": "gradient",
+          "colors": {
+            "type": "linear",
+            "stops": [
+              {
+                "hex": "#FB91F6",
+                "location": 0
+              },
+              {
+                "hex": "#D268CD",
+                "location": 0.43
+              },
+              {
+                "hex": "#9B66F7",
+                "location": 0.86
+              }
+            ],
+            "start_point": {
+              "x": -0.23,
+              "y": -0.17
+            },
+            "end_point": {
+              "x": 1.16,
+              "y": 1.01
+            }
+          }
+        },
+        "button_secondary_back_color": {
+          "type": "solid",
+          "hex": "#AAAAAA"
+        },
+        "button_primary_text_color": {
+          "type": "solid",
+          "hex": "#000000"
+        },
+        "button_secondary_text_color": {
+          "type": "gradient",
+          "colors": {
+            "type": "linear",
+            "stops": [
+              {
+                "hex": "#FB91F6",
+                "location": 0
+              },
+              {
+                "hex": "#9B66F7",
+                "location": 0.5
+              }
+            ],
+            "start_point": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "end_point": {
+              "x": 1.0,
+              "y": 1.0
+            }
+          }
+        },
+        "button_tertiary_text_color": {
+          "type": "solid",
+          "hex": "#A866EE"
+        },
+        "accent_color": {
+          "type": "solid",
+          "hex": "#E4BD6D"
+        },
+        "illustration_color": {
+          "type": "gradient",
+          "colors": {
+            "type": "linear",
+            "stops": [
+              {
+                "hex": "#E7C072",
+                "location": 0
+              },
+              {
+                "hex": "#C29F34",
+                "location": 1
+              }
+            ],
+            "start_point": {
+              "x": 0.5,
+              "y": 0
+            },
+            "end_point": {
+              "x": 0.5,
+              "y": 1
+            }
+          }
+        },
+        "illustration_shadow": {
+          "hex": "#FFD85B",
+          "radius": 44,
+          "point": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      }
+    }
   }
 }

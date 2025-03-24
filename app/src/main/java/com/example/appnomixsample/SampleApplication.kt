@@ -9,8 +9,8 @@ class SampleApplication : Application() {
         super.onCreate()
         CouponsSdkFacade.setup(
             CouponsSdkFacade.Config(
-                authToken = "insert-your-auth-token",
-                clientId = "insert-your-client-id"
+                authToken = getString(R.string.auth_token),
+                clientId = getString(R.string.client_id)
             )
         )
     }

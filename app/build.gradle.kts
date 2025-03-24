@@ -1,3 +1,6 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -41,6 +44,55 @@ android {
     buildFeatures {
         compose = true
     }
+
+    sourceSets {
+        getByName("main").res.srcDirs(
+            "src/main/res",
+            "${layout.buildDirectory.asFile.get()}/generated/res/appConfiguration"
+        )
+    }
+}
+
+tasks.register("generateConfigValues") {
+    val jsonFile = File("$projectDir/app-configuration.json")
+    val outputDir = File("${layout.buildDirectory.asFile.get()}/generated/res/appConfiguration/values")
+    val outputXml = File(outputDir, "values.xml")
+
+    doLast {
+        if (!jsonFile.exists()) {
+            throw GradleException("Config file not found: $jsonFile")
+        }
+
+        val jsonText = jsonFile.readText()
+        val json = JsonSlurper().parseText(jsonText) as Map<String, Any>
+
+        val credentials = json["credentials"] as Map<String, Any>
+
+        outputDir.mkdirs()
+        outputXml.writeText(
+            """
+            |<?xml version="1.0" encoding="utf-8"?>
+            |<resources>
+            |    <string name="client_id">${credentials["client_id"]}</string>
+            |    <string name="auth_token">${credentials["auth_token"]}</string>
+            |    <string name="onboarding_customization">${escapeJsonForXml(JsonOutput.toJson(json["onboarding_customization"]))}</string>
+            |</resources>
+            """.trimMargin()
+        )
+    }
+}
+
+fun escapeJsonForXml(json: String): String {
+    return json
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace("\"", "\\\"")
+        .replace("'", "&apos;")
+}
+
+tasks.named("preBuild").configure {
+    dependsOn("generateConfigValues")
 }
 
 dependencies {
