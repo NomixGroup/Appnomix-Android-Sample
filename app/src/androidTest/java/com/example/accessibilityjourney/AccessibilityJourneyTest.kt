@@ -43,7 +43,7 @@ class AccessibilityJourneyTest {
         launchApp()
 
         userInteractionDelay()
-        val tellMeMoreButton = findObjectByText("Tell me more")
+        val tellMeMoreButton = findObjectByText("Install the browser feature")
         tellMeMoreButton?.click()
 
         userInteractionDelay()
