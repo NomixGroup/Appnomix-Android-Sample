@@ -6,11 +6,7 @@
   "onboarding_customization": {
     "schema_version": "1",
     "content": {
-      "program_name": "Savers League"
-    },
-    "shape_styling": {
-      "button_primary_radius": 16,
-      "button_secondary_radius": 16
+      "program_name": "Shopz League"
     },
     "ui_styling": {
       "dark_styling": {
@@ -20,47 +16,42 @@
             "type": "linear",
             "stops": [
               {
-                "hex": "#FB91F6",
-                "location": 0
+                "location": 0.0,
+                "hex": "#ff4c5d"
               },
               {
-                "hex": "#D268CD",
-                "location": 0.43
-              },
-              {
-                "hex": "#9B66F7",
-                "location": 0.86
+                "location": 1.0,
+                "hex": "#ff0d5a"
               }
             ],
             "start_point": {
-              "x": -0.23,
-              "y": -0.17
+              "x": 0.25,
+              "y": 0.5
             },
             "end_point": {
-              "x": 1.16,
-              "y": 1.01
+              "x": 0.75,
+              "y": 0.75
             }
           }
         },
-        "button_secondary_back_color": {
-          "type": "solid",
-          "hex": "#FFFFFF"
-        },
         "button_primary_text_color": {
           "type": "solid",
-          "hex": "#000000"
+          "hex": "#ffffff"
+        },
+        "button_secondary_back_color": {
+          "type": "solid",
+          "hex": "#28263f"
         },
         "button_secondary_text_color": {
           "type": "solid",
-          "hex": "#000000"
+          "hex": "#ffffff"
         },
         "button_tertiary_text_color": {
           "type": "solid",
-          "hex": "#E379DD"
+          "hex": "#f26419"
         },
         "accent_color": {
-          "type": "solid",
-          "hex": "#E4BD6D"
+          "hex": "#F26419"
         },
         "illustration_color": {
           "type": "gradient",
@@ -68,30 +59,30 @@
             "type": "linear",
             "stops": [
               {
-                "hex": "#E7C072",
-                "location": 0
+                "location": 0.0,
+                "hex": "#e7c072"
               },
               {
-                "hex": "#FFF2CB",
-                "location": 1
+                "location": 1.0,
+                "hex": "#c29f34"
               }
             ],
             "start_point": {
-              "x": 0.5,
-              "y": 0
+              "x": 0.25,
+              "y": 0.5
             },
             "end_point": {
-              "x": 0.5,
-              "y": 1
+              "x": 0.75,
+              "y": 0.75
             }
           }
         },
         "illustration_shadow": {
-          "hex": "#FFC400",
+          "hex": "#FFD95C",
           "radius": 44,
           "point": {
-            "x": 0,
-            "y": 0
+            "x": 0.0,
+            "y": 0.0
           }
         }
       },
@@ -102,67 +93,42 @@
             "type": "linear",
             "stops": [
               {
-                "hex": "#FB91F6",
-                "location": 0
+                "location": 0.0,
+                "hex": "#ff4c5d"
               },
               {
-                "hex": "#D268CD",
-                "location": 0.43
-              },
-              {
-                "hex": "#9B66F7",
-                "location": 0.86
+                "location": 1.0,
+                "hex": "#ff0d5a"
               }
             ],
             "start_point": {
-              "x": -0.23,
-              "y": -0.17
+              "x": 0.25,
+              "y": 0.5
             },
             "end_point": {
-              "x": 1.16,
-              "y": 1.01
+              "x": 0.75,
+              "y": 0.75
             }
           }
-        },
-        "button_secondary_back_color": {
-          "type": "solid",
-          "hex": "#AAAAAA"
         },
         "button_primary_text_color": {
           "type": "solid",
-          "hex": "#000000"
+          "hex": "#ffffff"
+        },
+        "button_secondary_back_color": {
+          "type": "solid",
+          "hex": "#28263f"
         },
         "button_secondary_text_color": {
-          "type": "gradient",
-          "colors": {
-            "type": "linear",
-            "stops": [
-              {
-                "hex": "#FB91F6",
-                "location": 0
-              },
-              {
-                "hex": "#9B66F7",
-                "location": 0.5
-              }
-            ],
-            "start_point": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "end_point": {
-              "x": 1.0,
-              "y": 1.0
-            }
-          }
+          "type": "solid",
+          "hex": "#ffffff"
         },
         "button_tertiary_text_color": {
           "type": "solid",
-          "hex": "#A866EE"
+          "hex": "#f26419"
         },
         "accent_color": {
-          "type": "solid",
-          "hex": "#E4BD6D"
+          "hex": "#F26419"
         },
         "illustration_color": {
           "type": "gradient",
@@ -170,33 +136,37 @@
             "type": "linear",
             "stops": [
               {
-                "hex": "#E7C072",
-                "location": 0
+                "location": 0.0,
+                "hex": "#e7c072"
               },
               {
-                "hex": "#C29F34",
-                "location": 1
+                "location": 1.0,
+                "hex": "#c29f34"
               }
             ],
             "start_point": {
-              "x": 0.5,
-              "y": 0
+              "x": 0.25,
+              "y": 0.5
             },
             "end_point": {
-              "x": 0.5,
-              "y": 1
+              "x": 0.75,
+              "y": 0.75
             }
           }
         },
         "illustration_shadow": {
-          "hex": "#FFD85B",
+          "hex": "#FFD95C",
           "radius": 44,
           "point": {
-            "x": 0,
-            "y": 0
+            "x": 0.0,
+            "y": 0.0
           }
         }
       }
+    },
+    "shape_styling": {
+      "button_primary_radius": 16,
+      "button_secondary_radius": 16
     }
   }
 }

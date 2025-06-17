@@ -10,7 +10,8 @@ class SampleApplication : Application() {
         CouponsSdkFacade.setup(
             CouponsSdkFacade.Config(
                 authToken = getString(R.string.auth_token),
-                clientId = getString(R.string.client_id)
+                clientId = getString(R.string.client_id),
+                language = "de"
             )
         )
     }
