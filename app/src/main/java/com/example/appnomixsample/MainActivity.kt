@@ -31,7 +31,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import app.appnomix.sdk.external.AppnomixEvent
 import app.appnomix.sdk.external.AppnomixEventListener
-import app.appnomix.sdk.external.CouponsSdkFacade
+import app.appnomix.sdk.external.AppnomixSdkFacade
 import com.example.appnomixsample.ui.theme.AppnomixSampleTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -68,11 +68,11 @@ class MainActivity : ComponentActivity() {
 
         // when telling the user about this Appnomix Offer, which should prompt him to activate the extension,
         // the 'trackOfferDisplay' should be called with a param giving more context of when this was presented to the user
-        CouponsSdkFacade.trackOfferDisplay("Marble Crush - Next Level")
+        AppnomixSdkFacade.trackOfferDisplay("Marble Crush - Next Level")
 
         // Some apps may require a granular control of how or when the user finished the Appnomix Onboarding.
         // this event listeners gives app more insights of what the user did, so the host apps can track their own events, if needed
-        CouponsSdkFacade.registerEventListener(object : AppnomixEventListener {
+        AppnomixSdkFacade.registerEventListener(object : AppnomixEventListener {
             override fun onAppnomixEvent(event: AppnomixEvent) {
                 when (event) {
                     AppnomixEvent.ONBOARDING_STARTED -> {
@@ -100,7 +100,7 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         viewModelState.update { state ->
-            state.copy(isActivated = CouponsSdkFacade.isAccessibilityServiceEnabled())
+            state.copy(isActivated = AppnomixSdkFacade.isAccessibilityServiceEnabled())
         }
     }
 }
@@ -131,7 +131,7 @@ fun AppnomixControls(
             val onboardingCustomizationJson = stringResource(R.string.onboarding_customization)
             Button(
                 onClick = {
-                    CouponsSdkFacade.launchSdkOnboardingActivity(
+                    AppnomixSdkFacade.launchSdkOnboardingActivity(
                         context.findActivity() as Activity,
                         onboardingCustomizationJson
                     )
