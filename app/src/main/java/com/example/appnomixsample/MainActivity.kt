@@ -23,15 +23,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import app.appnomix.sdk.external.AppnomixCSDK
 import app.appnomix.sdk.external.AppnomixEvent
 import app.appnomix.sdk.external.AppnomixEventListener
-import app.appnomix.sdk.external.AppnomixSdkFacade
 import com.example.appnomixsample.ui.theme.AppnomixSampleTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -68,11 +67,11 @@ class MainActivity : ComponentActivity() {
 
         // when telling the user about this Appnomix Offer, which should prompt him to activate the extension,
         // the 'trackOfferDisplay' should be called with a param giving more context of when this was presented to the user
-        AppnomixSdkFacade.trackOfferDisplay("Marble Crush - Next Level")
+        AppnomixCSDK.trackOfferDisplay("Marble Crush - Next Level")
 
         // Some apps may require a granular control of how or when the user finished the Appnomix Onboarding.
         // this event listeners gives app more insights of what the user did, so the host apps can track their own events, if needed
-        AppnomixSdkFacade.registerEventListener(object : AppnomixEventListener {
+        AppnomixCSDK.registerEventListener(object : AppnomixEventListener {
             override fun onAppnomixEvent(event: AppnomixEvent) {
                 when (event) {
                     AppnomixEvent.ONBOARDING_STARTED -> {
@@ -100,7 +99,7 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         viewModelState.update { state ->
-            state.copy(isActivated = AppnomixSdkFacade.isAccessibilityServiceEnabled())
+            state.copy(isActivated = AppnomixCSDK.isAccessibilityServiceEnabled())
         }
     }
 }
@@ -128,12 +127,10 @@ fun AppnomixControls(
                 )
             )
             Spacer(modifier = Modifier.height(24.dp))
-            val onboardingCustomizationJson = stringResource(R.string.onboarding_customization)
             Button(
                 onClick = {
-                    AppnomixSdkFacade.launchSdkOnboardingActivity(
+                    AppnomixCSDK.launchSdkOnboardingActivity(
                         context.findActivity() as Activity,
-                        onboardingCustomizationJson
                     )
                 }) {
                 Text(text = "Launch Onboarding")
