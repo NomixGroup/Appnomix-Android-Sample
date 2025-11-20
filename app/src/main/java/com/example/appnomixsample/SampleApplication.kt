@@ -1,16 +1,16 @@
 package com.example.appnomixsample
 
 import android.app.Application
-import app.appnomix.sdk.external.AppnomixSdkFacade
+import app.appnomix.sdk.external.AppnomixCSDK
 
 class SampleApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        AppnomixSdkFacade.setup(
-            AppnomixSdkFacade.Config(
-                authToken = "01K1ZF0V4X8E6V71EYM2XBQTXT",
-                clientId = "01K1ZF2DF4WTYXDHGCW4KV7RKF",
+        AppnomixCSDK.initialize(
+            clientId = "YOUR_CLIENT_ID",
+            authToken = "YOUR_AUTH_TOKEN",
+            options = AppnomixCSDK.ConfigurationOptions(
                 language = "de"
             )
         )
