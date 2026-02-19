@@ -129,7 +129,7 @@ fun AppnomixControls(
             Spacer(modifier = Modifier.height(24.dp))
             Button(
                 onClick = {
-                    AppnomixCSDK.launchSdkOnboardingActivity(
+                    AppnomixCSDK.showOnboarding(
                         context.findActivity() as Activity,
                     )
                 }) {
